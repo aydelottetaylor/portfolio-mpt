@@ -5,6 +5,7 @@ pyarrow>=17.0.0
 matplotlib>=3.8
 scipy>=1.11
 cvxpy>=1.5.2
+matplotlib>=3.10.7
 
 # dev
 pytest>=8.0
