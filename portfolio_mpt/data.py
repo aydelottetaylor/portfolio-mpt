@@ -15,6 +15,16 @@ class FetchSpec:
     end: str
     interval: str = "1d"
     
+    
+def _normalize_index(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    # ensure tz-naive DatetimeIndex and drop freq to avoid cache/load diffs
+    if not isinstance(df.index, pd.DatetimeIndex):
+        df.index = pd.DatetimeIndex(df.index)
+    df.index = df.index.tz_localize(None)
+    df.index.freq = None
+    return df
+
 
 # Obtain data from yfinance and put into parquet and manifest
 def fetch_prices(spec: FetchSpec, force: bool = False) -> pd.DataFrame:
@@ -41,6 +51,7 @@ def fetch_prices(spec: FetchSpec, force: bool = False) -> pd.DataFrame:
 
     # Save data to parquet
     data = data.sort_index().astype('float64')
+    data = _normalize_index(data)
     data.to_parquet(pq)
     
     # Create and save manifest
@@ -88,7 +99,8 @@ def load_latest_for(tickers: Iterable[str]) -> pd.DataFrame | None:
     for p in candidates:
         parts = p.stem.split('_')[0].split('-')
         if set(parts) == want:
-            return pd.read_parquet(p)
+            df = pd.read_parquet(p)
+            return _normalize_index(df)
 
     # If no match found return None
     return None

@@ -1,6 +1,6 @@
 import argparse
 from .data import FetchSpec, fetch_prices
-from .wrangle import to_returns
+# from .wrangle import to_returns
 from .viz import line
 
 def main():
@@ -18,11 +18,11 @@ def main():
     if args.cmd == "data-spike":
         spec = FetchSpec(args.tickers, args.start, args.end, args.interval)
         prices = fetch_prices(spec, force=args.force)
-        rets = to_returns(prices)
         # quick visual for sanity (non-blocking in CI; fine locally)
         try:
             line(prices, title=f"Prices: {' '.join(args.tickers)}")
-            import matplotlib.pyplot as plt; plt.show()
+            import matplotlib.pyplot as plt
+            plt.show()
         except Exception:
             pass
 
