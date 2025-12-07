@@ -27,49 +27,64 @@ def _normalize_index(df: pd.DataFrame) -> pd.DataFrame:
 
 
 # Obtain data from yfinance and put into parquet and manifest
-def fetch_prices(spec: FetchSpec, force: bool = False) -> pd.DataFrame:
+def fetch_prices(spec: FetchSpec, force: bool = False, clean: bool = False) -> pd.DataFrame:
     DATA_RAW.mkdir(parents=True, exist_ok=True)
-    
+
     # Get parquet and manifest paths
     pq = _parquet_path(spec)
     mf = _manifest_path(spec)
+
+    # If we already have data and don't force a re-download
     if pq.exists() and not force:
-        return pd.read_parquet(pq)
-    
-    # Get data
+        if clean:
+            # Clean existing raw file and return cleaned data
+            from .clean import clean_price_file
+            cleaned_path = clean_price_file(pq)
+            return pd.read_parquet(cleaned_path)
+        else:
+            return pd.read_parquet(pq)
+
+    # Otherwise download fresh data from yfinance
     data = yf.download(
         tickers=spec.tickers,
         start=spec.start,
         end=spec.end,
         interval=spec.interval,
         auto_adjust=True,
-        progress=False
-    )['Close']
-    
+        progress=False,
+    )["Close"]
+
     if isinstance(data, pd.Series):
         data = data.to_frame()
 
     # Save data to parquet
-    data = data.sort_index().astype('float64')
+    data = data.sort_index().astype("float64")
     data = _normalize_index(data)
     data.to_parquet(pq)
-    
+
     # Create and save manifest
     manifest = {
-        'tickers': spec.tickers,
-        'start': spec.start,
-        'end': spec.end,
-        'interval': spec.interval,
-        'rows': int(data.shape[0]),
-        'cols': list(data.columns),
-        'library_versions': {
-            'pandas': pd.__version__,
-            'yfinance': yf.__version__,
+        "tickers": spec.tickers,
+        "start": spec.start,
+        "end": spec.end,
+        "interval": spec.interval,
+        "rows": int(data.shape[0]),
+        "cols": list(data.columns),
+        "library_versions": {
+            "pandas": pd.__version__,
+            "yfinance": yf.__version__,
         },
     }
     mf.write_text(json.dumps(manifest, indent=2))
-    
+
+    # Optionally clean the freshly downloaded file and return cleaned data
+    if clean:
+        from .clean import clean_price_file
+        cleaned_path = clean_price_file(pq)
+        return pd.read_parquet(cleaned_path)
+
     return data
+
 
 
 # Create Manifest PATH
@@ -104,4 +119,27 @@ def load_latest_for(tickers: Iterable[str]) -> pd.DataFrame | None:
 
     # If no match found return None
     return None
+
+
+def load_cleaned_for(tickers: Iterable[str]) -> pd.DataFrame | None:
+    """
+    Load the most recent cleaned parquet file matching the given tickers.
+    Returns None if no cleaned file exists.
+    """
+
+    want = set(tickers)
+    cleaned_files = sorted(
+        Path("data/clean").glob("*.parquet"),
+        key=lambda p: p.stat().st_mtime,
+        reverse=True
+    )
+
+    for p in cleaned_files:
+        parts = p.stem.split('_')[0].split('-')
+        if set(parts) == want:
+            df = pd.read_parquet(p)
+            return df
+
+    return None
+
     

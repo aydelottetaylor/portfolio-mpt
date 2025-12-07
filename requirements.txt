@@ -6,6 +6,8 @@ matplotlib>=3.8
 scipy>=1.14.0
 cvxpy>=1.5.2
 matplotlib>=3.10.7
+streamlit>=1.51.0
+altair
 
 # dev
 pytest>=8.0

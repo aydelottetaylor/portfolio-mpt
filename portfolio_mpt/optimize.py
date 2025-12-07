@@ -107,6 +107,37 @@ def max_sharpe(mu: pd.Series, Sigma: pd.DataFrame, rf: float = 0.0) -> OptResult
     return OptResult(w, r, vol, sharpe, res.success, res.message)
 
 
+def frontier_risk_aversion(mu: pd.Series, Sigma: pd.DataFrame, lambdas=None):
+    """
+    Compute efficient frontier using risk aversion values instead of target returns.
+    Produces a smooth frontier that includes the max Sharpe portfolio.
+    """
+    if lambdas is None:
+        lambdas = np.logspace(-3, 3, 60)  # wide range of preferences
+
+    n = len(mu)
+    x0 = np.ones(n) / n
+    cons = [_sum_to_one_constraint()]
+    bounds = _bounds_long_only(n)
+
+    results = []
+
+    for lam in lambdas:
+        def obj(w, lam_, m, S):
+            return lam_ * np.dot(w, S.values @ w) - np.dot(w, m.values)
+
+        res = _solve(x0, obj, args=(lam, mu, Sigma), bounds=bounds, constraints=cons)
+
+        w = res.x
+        vol = _risk(w, Sigma)
+        ret = _ret(w, mu)
+        shp = (ret / vol) if vol > 0 else np.nan
+
+        results.append(OptResult(w, ret, vol, shp, res.success, res.message))
+
+    return results
+
+
 def efficient_frontier(
     mu: pd.Series,
     Sigma: pd.DataFrame,
