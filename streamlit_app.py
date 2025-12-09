@@ -100,9 +100,21 @@ if run_button:
         st.dataframe(mu)
 
         st.write("### Covariance Heatmap")
-        fig, ax = plt.subplots(figsize=(8, 6))
-        sns.heatmap(Sigma, cmap="coolwarm", annot=False, square=True, ax=ax)
-        st.pyplot(fig)
+        cov_df = Sigma.reset_index().melt(id_vars="index", var_name="Asset", value_name="Covariance")
+        cov_df = cov_df.rename(columns={"index": "Base"})
+
+        heatmap = (
+            alt.Chart(cov_df)
+            .mark_rect()
+            .encode(
+                x=alt.X("Asset:O", sort=None),
+                y=alt.Y("Base:O", sort=None),
+                color=alt.Color("Covariance:Q", scale=alt.Scale(scheme="redblue")),
+                tooltip=["Base", "Asset", "Covariance"]
+            )
+        )
+
+        st.altair_chart(heatmap, use_container_width=True)
 
 
     # ============================
