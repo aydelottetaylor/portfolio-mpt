@@ -3,8 +3,6 @@ title: "Tutorial: Portfolio Optimization Workflow"
 format: html
 ---
 
-# Tutorial
-
 This tutorial walks through a complete workflow using `portfolio-mpt`.
 
 ## 1. Import the package
