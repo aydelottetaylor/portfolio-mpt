@@ -100,8 +100,16 @@ if run_button:
         st.dataframe(mu)
 
         st.write("### Covariance Heatmap")
-        cov_df = Sigma.reset_index().melt(id_vars="index", var_name="Asset", value_name="Covariance")
-        cov_df = cov_df.rename(columns={"index": "Base"})
+
+        # Reshape covariance matrix into long format
+        cov_df = Sigma.copy()
+        cov_df["Base"] = cov_df.index
+
+        cov_df = cov_df.melt(
+            id_vars="Base",
+            var_name="Asset",
+            value_name="Covariance"
+        )
 
         heatmap = (
             alt.Chart(cov_df)
@@ -114,7 +122,7 @@ if run_button:
             )
         )
 
-        st.altair_chart(heatmap, use_container_width=True)
+        st.altair_chart(heatmap, width='stretch')
 
 
     # ============================
