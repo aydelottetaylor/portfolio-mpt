@@ -95,14 +95,14 @@
     "href": "report.html",
     "title": "Final Project Report: Portfolio-MPT",
     "section": "",
-    "text": "This project implements portfolio-mpt, a Python package designed to support Modern Portfolio Theory (MPT) workflows including:\n\nFinancial data collection\n\nData cleaning and wrangling\n\nReturn and covariance estimation\n\nPortfolio optimization (GMV, Max Sharpe, Efficient Frontier)\n\nVisualization of results\n\nAn interactive Streamlit dashboard\n\nA fully documented Quarto website\n\nThe goal is to provide a complete, reproducible pipeline from raw market data to portfolio insights using open-source tools."
+    "text": "This project implements portfolio-mpt, a Python package designed to support Modern Portfolio Theory (MPT) workflows including:\n\nFinancial data collection\n\nData cleaning and wrangling\n\nReturn and covariance estimation\n\nPortfolio optimization (GMV, Max Sharpe, Efficient Frontier)\n\nVisualization of results\n\nAn interactive Streamlit dashboard\n\nA fully documented Quarto website\n\nThe goal is to provide a complete, reproducible pipeline from raw market data to portfolio insights using open-source tools.\nThis written report accompanies the full Quarto documentation site and is hosted on the same GitHub Pages deployment, as required."
   },
   {
     "objectID": "report.html#data-retrieval",
     "href": "report.html#data-retrieval",
     "title": "Final Project Report: Portfolio-MPT",
     "section": "Data Retrieval",
-    "text": "Data Retrieval\nPrice data is obtained through Yahoo Finance via the yfinance library. Users specify:\n\na list of tickers\n\nstart and end dates\n\nfrequency interval\n\nvia the FetchSpec dataclass.\nPrices are stored locally in parquet format along with a manifest file capturing metadata such as tickers, time range, and library versions."
+    "text": "Data Retrieval\nPrice data is obtained through Yahoo Finance via the yfinance library. Users specify:\n\na list of tickers\n\nstart and end dates\n\nfrequency interval\n\nvia the FetchSpec dataclass.\nPrices are stored locally in parquet format along with a manifest file capturing metadata such as tickers, time range, and library versions.\nAll price data used in this project is obtained dynamically via the Yahoo Finance API. The dataset is not prepackaged; every run fetches fresh, original data based on the selected tickers and date ranges."
   },
   {
     "objectID": "report.html#data-cleaning-pipeline",

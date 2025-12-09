@@ -191,6 +191,7 @@ ul.task-list li input[type="checkbox"] {
 <li>A fully documented Quarto website</li>
 </ul>
 <p>The goal is to provide a <strong>complete, reproducible pipeline</strong> from raw market data to portfolio insights using open-source tools.</p>
+<p>This written report accompanies the full Quarto documentation site and is hosted on the same GitHub Pages deployment, as required.</p>
 <hr>
 </section>
 <section id="data-collection-cleaning" class="level1">
@@ -207,6 +208,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>via the <code>FetchSpec</code> dataclass.</p>
 <p>Prices are stored locally in parquet format along with a manifest file capturing metadata such as tickers, time range, and library versions.</p>
+<p>All price data used in this project is obtained dynamically via the Yahoo Finance API. The dataset is not prepackaged; every run fetches fresh, original data based on the selected tickers and date ranges.</p>
 </section>
 <section id="data-cleaning-pipeline" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning-pipeline">Data Cleaning Pipeline</h2>
@@ -328,16 +330,22 @@ ul.task-list li input[type="checkbox"] {
 <p>The dashboard consists of multiple tabs:</p>
 <ul>
 <li><strong>Prices</strong> — cleaned price data<br>
+<img src="images/prices.png" class="img-fluid"><br>
 </li>
 <li><strong>Returns</strong> — daily returns visualization<br>
+<img src="images/returns.png" class="img-fluid"><br>
 </li>
 <li><strong>Estimates</strong> — expected returns and covariance tables<br>
+<img src="images/estimates.png" class="img-fluid"><br>
 </li>
 <li><strong>Optimization</strong> — GMV and Max Sharpe results, weights, charts<br>
+<img src="images/optimization.png" class="img-fluid"><br>
 </li>
 <li><strong>Efficient Frontier</strong> — frontier, CML, tangency portfolio<br>
+<img src="images/frontier.png" class="img-fluid"><br>
 </li>
-<li><strong>Monte Carlo Simulation</strong> — future growth simulations, distributions</li>
+<li><strong>Monte Carlo Simulation</strong> — future growth simulations, distributions<br>
+<img src="images/montecarlo.png" class="img-fluid"></li>
 </ul>
 <p>This offers a hands-on view of portfolio behavior and tradeoffs.</p>
 <hr>
@@ -367,16 +375,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>analysis<br>
 </li>
-<li>optimization<br>
-</li>
-<li>cleaning pipeline</li>
+<li>optimization</li>
 </ul>
 <p>This ensures correctness and stability across module workflows.</p>
 <hr>
 </section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>The <strong>portfolio-mpt</strong> project provides a full ecosystem for Modern Portfolio Theory analysis in Python:</p>
+<p>This <strong>portfolio-mpt</strong> project provides a full ecosystem for Modern Portfolio Theory analysis in Python:</p>
 <ul>
 <li>reproducible data acquisition<br>
 </li>

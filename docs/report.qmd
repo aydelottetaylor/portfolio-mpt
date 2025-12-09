@@ -21,6 +21,8 @@ Modern Portfolio Theory (MPT) workflows including:
 The goal is to provide a **complete, reproducible pipeline** from raw market data
 to portfolio insights using open-source tools.
 
+This written report accompanies the full Quarto documentation site and is hosted on the same GitHub Pages deployment, as required.
+
 ---
 
 # Data Collection & Cleaning
@@ -38,6 +40,8 @@ via the `FetchSpec` dataclass.
 
 Prices are stored locally in parquet format along with a manifest file capturing
 metadata such as tickers, time range, and library versions.
+
+All price data used in this project is obtained dynamically via the Yahoo Finance API. The dataset is not prepackaged; every run fetches fresh, original data based on the selected tickers and date ranges.
 
 ## Data Cleaning Pipeline
 
@@ -143,11 +147,11 @@ The dashboard consists of multiple tabs:
 - **Estimates** — expected returns and covariance tables  
 ![](images/estimates.png)  
 - **Optimization** — GMV and Max Sharpe results, weights, charts  
-![]()  
+![](images/optimization.png)  
 - **Efficient Frontier** — frontier, CML, tangency portfolio  
-![]()  
+![](images/frontier.png)  
 - **Monte Carlo Simulation** — future growth simulations, distributions  
-![]()  
+![](images/montecarlo.png)  
 
 This offers a hands-on view of portfolio behavior and tradeoffs.
 
@@ -173,8 +177,7 @@ Test coverage includes:
 - data fetching  
 - wrangling  
 - analysis  
-- optimization  
-- cleaning pipeline  
+- optimization   
 
 This ensures correctness and stability across module workflows.
 
@@ -182,7 +185,7 @@ This ensures correctness and stability across module workflows.
 
 # Conclusion
 
-The **portfolio-mpt** project provides a full ecosystem for Modern Portfolio
+This **portfolio-mpt** project provides a full ecosystem for Modern Portfolio
 Theory analysis in Python:
 
 - reproducible data acquisition  

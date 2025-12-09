@@ -3,7 +3,6 @@ import pandas as pd
 from portfolio_mpt import data, wrangle, analysis, optimize
 import altair as alt
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
 
 
