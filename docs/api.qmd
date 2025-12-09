@@ -150,7 +150,7 @@ Convert simple returns → log returns.
 - **simple_returns** `(Series or DataFrame)`
 
 #### Returns
-- **Same type as input**
+- `Same type as input`
 
 #### Raises 
 - `ValueError` - If any return ≤ –100%.
