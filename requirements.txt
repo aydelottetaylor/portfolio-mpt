@@ -8,6 +8,7 @@ cvxpy>=1.5.2
 matplotlib>=3.10.7
 streamlit>=1.51.0
 altair
+seaborn
 
 # dev
 pytest>=8.0

@@ -12,6 +12,8 @@ website:
         href: tutorial.qmd
       - text: "API Reference"
         href: api.qmd
+      - text: "Report"
+        href: report.qmd
 
 format:
   html:

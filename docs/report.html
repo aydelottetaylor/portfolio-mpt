@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio-MPT: Modern Portfolio Optimization in Python – portfolio-mpt Documentation</title>
+<title>Final Project Report: Portfolio-MPT – portfolio-mpt Documentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -127,7 +92,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -139,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">API Reference</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./report.html"> 
+    <a class="nav-link active" href="./report.html" aria-current="page"> 
 <span class="menu-text">Report</span></a>
   </li>  
 </ul>
@@ -158,12 +123,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-collection-cleaning" id="toc-data-collection-cleaning" class="nav-link" data-scroll-target="#data-collection-cleaning">Data Collection &amp; Cleaning</a>
   <ul class="collapse">
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a></li>
-  <li><a href="#documentation-sections" id="toc-documentation-sections" class="nav-link" data-scroll-target="#documentation-sections">Documentation Sections</a></li>
+  <li><a href="#data-retrieval" id="toc-data-retrieval" class="nav-link" data-scroll-target="#data-retrieval">Data Retrieval</a></li>
+  <li><a href="#data-cleaning-pipeline" id="toc-data-cleaning-pipeline" class="nav-link" data-scroll-target="#data-cleaning-pipeline">Data Cleaning Pipeline</a></li>
   </ul></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis" class="nav-link" data-scroll-target="#statistical-analysis">Statistical Analysis</a>
+  <ul class="collapse">
+  <li><a href="#expected-returns" id="toc-expected-returns" class="nav-link" data-scroll-target="#expected-returns">Expected Returns</a></li>
+  <li><a href="#covariance-matrix" id="toc-covariance-matrix" class="nav-link" data-scroll-target="#covariance-matrix">Covariance Matrix</a></li>
+  </ul></li>
+  <li><a href="#portfolio-optimization" id="toc-portfolio-optimization" class="nav-link" data-scroll-target="#portfolio-optimization">Portfolio Optimization</a>
+  <ul class="collapse">
+  <li><a href="#global-minimum-variance-gmv-portfolio" id="toc-global-minimum-variance-gmv-portfolio" class="nav-link" data-scroll-target="#global-minimum-variance-gmv-portfolio">1. <strong>Global Minimum Variance (GMV) Portfolio</strong></a></li>
+  <li><a href="#maximum-sharpe-ratio-portfolio" id="toc-maximum-sharpe-ratio-portfolio" class="nav-link" data-scroll-target="#maximum-sharpe-ratio-portfolio">2. <strong>Maximum Sharpe Ratio Portfolio</strong></a></li>
+  <li><a href="#efficient-frontier" id="toc-efficient-frontier" class="nav-link" data-scroll-target="#efficient-frontier">3. <strong>Efficient Frontier</strong></a></li>
+  </ul></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  <li><a href="#streamlit-dashboard" id="toc-streamlit-dashboard" class="nav-link" data-scroll-target="#streamlit-dashboard">Streamlit Dashboard</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a></li>
   </ul>
 </nav>
     </div>
@@ -172,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Portfolio-MPT: Modern Portfolio Optimization in Python</h1>
+<h1 class="title">Final Project Report: Portfolio-MPT</h1>
 </div>
 
 
@@ -189,48 +172,230 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="welcome" class="level1">
-<h1>Welcome</h1>
-<p><code>portfolio-mpt</code> is a Python package for:</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This project implements <strong>portfolio-mpt</strong>, a Python package designed to support Modern Portfolio Theory (MPT) workflows including:</p>
 <ul>
-<li>Fetching stock data</li>
-<li>Computing returns</li>
-<li>Estimating expected returns and covariance matrices</li>
-<li>Running modern portfolio optimization (GMV, max Sharpe, efficient frontier)</li>
-<li>Visualizing results</li>
-<li>Interacting with a Streamlit dashboard</li>
+<li>Financial data collection<br>
+</li>
+<li>Data cleaning and wrangling<br>
+</li>
+<li>Return and covariance estimation<br>
+</li>
+<li>Portfolio optimization (GMV, Max Sharpe, Efficient Frontier)<br>
+</li>
+<li>Visualization of results<br>
+</li>
+<li>An interactive Streamlit dashboard<br>
+</li>
+<li>A fully documented Quarto website</li>
 </ul>
-<p>This documentation explains how to install, use, and understand the package.</p>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>Install directly from GitHub:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pip install <span class="st">"git+https://github.com/aydelottetaylor/portfolio-mpt"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="features" class="level2">
-<h2 class="anchored" data-anchor-id="features">Features</h2>
-<ul>
-<li>Data fetching using Yahoo finance<br>
-</li>
-<li>Wrangling: returns, rolling windows, log/simple conversions<br>
-</li>
-<li>Analysis: expected returns, covariance estimation<br>
-</li>
-<li>Optimization: GMV, Max Sharpe, efficient frontier<br>
-</li>
-<li>Visualization: line charts, frontier plots<br>
-</li>
-<li>Streamlit dashboard</li>
-</ul>
-</section>
-<section id="documentation-sections" class="level2">
-<h2 class="anchored" data-anchor-id="documentation-sections">Documentation Sections</h2>
-<p>Use the navigation bar above to view:<br>
-- <strong>Tutorial</strong> - full end-to-end-workflow<br>
-- <strong>API Reference</strong> - function-level descriptions</p>
+<p>The goal is to provide a <strong>complete, reproducible pipeline</strong> from raw market data to portfolio insights using open-source tools.</p>
 <hr>
-
-
 </section>
+<section id="data-collection-cleaning" class="level1">
+<h1>Data Collection &amp; Cleaning</h1>
+<section id="data-retrieval" class="level2">
+<h2 class="anchored" data-anchor-id="data-retrieval">Data Retrieval</h2>
+<p>Price data is obtained through Yahoo Finance via the <code>yfinance</code> library. Users specify:</p>
+<ul>
+<li>a list of tickers<br>
+</li>
+<li>start and end dates<br>
+</li>
+<li>frequency interval</li>
+</ul>
+<p>via the <code>FetchSpec</code> dataclass.</p>
+<p>Prices are stored locally in parquet format along with a manifest file capturing metadata such as tickers, time range, and library versions.</p>
+</section>
+<section id="data-cleaning-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning-pipeline">Data Cleaning Pipeline</h2>
+<p>Raw financial data often contains:</p>
+<ul>
+<li>missing timestamps<br>
+</li>
+<li>non-uniform trading days<br>
+</li>
+<li>duplicated entries</li>
+</ul>
+<p>The cleaning module ensures:</p>
+<ul>
+<li>timestamps are normalized<br>
+</li>
+<li>duplicate rows are removed<br>
+</li>
+<li>data is reindexed to daily frequency<br>
+</li>
+<li>forward/backward filling handles gaps</li>
+</ul>
+<p>This results in high-quality, analysis-ready price matrices.</p>
+<hr>
+</section>
+</section>
+<section id="data-wrangling" class="level1">
+<h1>Data Wrangling</h1>
+<p>The wrangling module converts prices into useful return formats:</p>
+<ul>
+<li>simple returns<br>
+</li>
+<li>log returns<br>
+</li>
+<li>excess returns<br>
+</li>
+<li>cumulative and rolling returns</li>
+</ul>
+<p>These transformations form the statistical foundation for portfolio analysis.</p>
+<hr>
+</section>
+<section id="statistical-analysis" class="level1">
+<h1>Statistical Analysis</h1>
+<section id="expected-returns" class="level2">
+<h2 class="anchored" data-anchor-id="expected-returns">Expected Returns</h2>
+<p>Two methods are supported:</p>
+<ul>
+<li>arithmetic mean returns<br>
+</li>
+<li>exponential moving average (EMA)</li>
+</ul>
+<p>Values are annualized to match typical MPT conventions.</p>
+</section>
+<section id="covariance-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="covariance-matrix">Covariance Matrix</h2>
+<p>Risk estimation is performed using:</p>
+<ul>
+<li>sample covariance (default)<br>
+</li>
+<li>Ledoit–Wolf shrinkage estimator (optional)</li>
+</ul>
+<p>Annualized covariance is used to compute portfolio volatility.</p>
+<hr>
+</section>
+</section>
+<section id="portfolio-optimization" class="level1">
+<h1>Portfolio Optimization</h1>
+<p>Three major optimization routines are implemented:</p>
+<section id="global-minimum-variance-gmv-portfolio" class="level3">
+<h3 class="anchored" data-anchor-id="global-minimum-variance-gmv-portfolio">1. <strong>Global Minimum Variance (GMV) Portfolio</strong></h3>
+<ul>
+<li>Minimizes volatility<br>
+</li>
+<li>Produces the most stable portfolio allocation</li>
+</ul>
+</section>
+<section id="maximum-sharpe-ratio-portfolio" class="level3">
+<h3 class="anchored" data-anchor-id="maximum-sharpe-ratio-portfolio">2. <strong>Maximum Sharpe Ratio Portfolio</strong></h3>
+<ul>
+<li>Balances return and risk<br>
+</li>
+<li>Finds the tangency portfolio on the Capital Market Line</li>
+</ul>
+</section>
+<section id="efficient-frontier" class="level3">
+<h3 class="anchored" data-anchor-id="efficient-frontier">3. <strong>Efficient Frontier</strong></h3>
+<p>Two methods:</p>
+<ul>
+<li>target-return sweep<br>
+</li>
+<li><strong>risk-aversion frontier</strong> (smooth, convex, recommended)</li>
+</ul>
+<p>These routines output weights, return, volatility, and Sharpe ratio.</p>
+<hr>
+</section>
+</section>
+<section id="visualization" class="level1">
+<h1>Visualization</h1>
+<p>Visualization tools include:</p>
+<ul>
+<li>price and return charts<br>
+</li>
+<li>efficient frontier scatter plots<br>
+</li>
+<li>Capital Market Line<br>
+</li>
+<li>portfolio allocation pie charts<br>
+</li>
+<li>simulated future portfolio paths (Monte Carlo)<br>
+</li>
+<li>cumulative growth curves<br>
+</li>
+<li>portfolio statistics tables</li>
+</ul>
+<p>The Streamlit interface uses these visualizations to provide an interactive analysis environment.</p>
+<hr>
+</section>
+<section id="streamlit-dashboard" class="level1">
+<h1>Streamlit Dashboard</h1>
+<p>The dashboard consists of multiple tabs:</p>
+<ul>
+<li><strong>Prices</strong> — cleaned price data<br>
+</li>
+<li><strong>Returns</strong> — daily returns visualization<br>
+</li>
+<li><strong>Estimates</strong> — expected returns and covariance tables<br>
+</li>
+<li><strong>Optimization</strong> — GMV and Max Sharpe results, weights, charts<br>
+</li>
+<li><strong>Efficient Frontier</strong> — frontier, CML, tangency portfolio<br>
+</li>
+<li><strong>Monte Carlo Simulation</strong> — future growth simulations, distributions</li>
+</ul>
+<p>This offers a hands-on view of portfolio behavior and tradeoffs.</p>
+<hr>
+</section>
+<section id="documentation" class="level1">
+<h1>Documentation</h1>
+<p>A complete Quarto documentation site includes:</p>
+<ul>
+<li>Home page<br>
+</li>
+<li>Tutorial<br>
+</li>
+<li>API Reference<br>
+</li>
+<li>Final report</li>
+</ul>
+<p>Published via GitHub Pages for public access.</p>
+<hr>
+</section>
+<section id="testing" class="level1">
+<h1>Testing</h1>
+<p>Test coverage includes:</p>
+<ul>
+<li>data fetching<br>
+</li>
+<li>wrangling<br>
+</li>
+<li>analysis<br>
+</li>
+<li>optimization<br>
+</li>
+<li>cleaning pipeline</li>
+</ul>
+<p>This ensures correctness and stability across module workflows.</p>
+<hr>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The <strong>portfolio-mpt</strong> project provides a full ecosystem for Modern Portfolio Theory analysis in Python:</p>
+<ul>
+<li>reproducible data acquisition<br>
+</li>
+<li>rigorous financial statistics<br>
+</li>
+<li>optimization routines<br>
+</li>
+<li>interactive visualization<br>
+</li>
+<li>well-organized documentation</li>
+</ul>
+<p>The result is a flexible, reusable toolkit suitable for students, analysts, and developers exploring quantitative finance.</p>
+<hr>
+</section>
+<section id="appendix" class="level1">
+<h1>Appendix</h1>
+<p>This report is part of the Quarto documentation website accompanying the project.</p>
+
+
 </section>
 
 </main> <!-- /main -->

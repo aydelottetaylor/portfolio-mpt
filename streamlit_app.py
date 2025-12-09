@@ -3,6 +3,7 @@ import pandas as pd
 from portfolio_mpt import data, wrangle, analysis, optimize
 import altair as alt
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 
 
@@ -98,8 +99,10 @@ if run_button:
         st.write("### Expected Returns")
         st.dataframe(mu)
 
-        st.write("### Covariance Matrix")
-        st.dataframe(Sigma)
+        st.write("### Covariance Heatmap")
+        fig, ax = plt.subplots(figsize=(8, 6))
+        sns.heatmap(Sigma, cmap="coolwarm", annot=False, square=True, ax=ax)
+        st.pyplot(fig)
 
 
     # ============================
