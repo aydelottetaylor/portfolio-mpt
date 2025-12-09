@@ -1,0 +1,42 @@
+---
+title: "Portfolio-MPT: Modern Portfolio Optimization in Python"
+format: html
+---
+
+# Welcome
+
+`portfolio-mpt` is a Python package for:
+
+- Fetching stock data
+- Computing returns
+- Estimating expected returns and covariance matrices
+- Running modern portfolio optimization (GMV, max Sharpe, efficient frontier)
+- Visualizing results
+- Interacting with a Streamlit dashboard
+
+This documentation explains how to install, use, and understand the package.
+
+## Installation
+
+Install directly from GitHub:
+
+```python
+pip install "git+https://github.com/aydelottetaylor/portfolio-mpt"
+```
+
+## Features
+
+- Data fetching using Yahoo finance  
+- Wrangling: returns, rolling windows, log/simple conversions  
+- Analysis: expected returns, covariance estimation  
+- Optimization: GMV, Max Sharpe, efficient frontier  
+- Visualization: line charts, frontier plots  
+- Streamlit dashboard
+
+## Documentation Sections
+
+Use the navigation bar above to view:  
+- **Tutorial** - full end-to-end-workflow  
+- **API Reference** - function-level descriptions  
+
+---

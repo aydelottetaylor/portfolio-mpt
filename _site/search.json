@@ -1,0 +1,324 @@
+[
+  {
+    "objectID": "examples/quickstart.html",
+    "href": "examples/quickstart.html",
+    "title": "This is a guide on how to get started with this library!",
+    "section": "",
+    "text": "To use in a Python notebook, run the following to install from GitHub and test if the library imports correctly:\n!pip install \"git+https://github.com/aydelottetaylor/portfolio-mpt\"\n\nimport portfolio_mpt as pm\n\npm.hello()"
+  },
+  {
+    "objectID": "docs/index.html",
+    "href": "docs/index.html",
+    "title": "Portfolio-MPT: Modern Portfolio Optimization in Python",
+    "section": "",
+    "text": "portfolio-mpt is a Python package for:\n\nFetching stock data\nComputing returns\nEstimating expected returns and covariance matrices\nRunning modern portfolio optimization (GMV, max Sharpe, efficient frontier)\nVisualizing results\nInteracting with a Streamlit dashboard\n\nThis documentation explains how to install, use, and understand the package.\n\n\nInstall directly from GitHub:\npip install \"git+https://github.com/aydelottetaylor/portfolio-mpt\"\n\n\n\n\nData fetching using Yahoo finance\n\nWrangling: returns, rolling windows, log/simple conversions\n\nAnalysis: expected returns, covariance estimation\n\nOptimization: GMV, Max Sharpe, efficient frontier\n\nVisualization: line charts, frontier plots\n\nStreamlit dashboard\n\n\n\n\nUse the navigation bar above to view:\n- Tutorial - full end-to-end-workflow\n- API Reference - function-level descriptions"
+  },
+  {
+    "objectID": "docs/index.html#installation",
+    "href": "docs/index.html#installation",
+    "title": "Portfolio-MPT: Modern Portfolio Optimization in Python",
+    "section": "",
+    "text": "Install directly from GitHub:\npip install \"git+https://github.com/aydelottetaylor/portfolio-mpt\""
+  },
+  {
+    "objectID": "docs/index.html#features",
+    "href": "docs/index.html#features",
+    "title": "Portfolio-MPT: Modern Portfolio Optimization in Python",
+    "section": "",
+    "text": "Data fetching using Yahoo finance\n\nWrangling: returns, rolling windows, log/simple conversions\n\nAnalysis: expected returns, covariance estimation\n\nOptimization: GMV, Max Sharpe, efficient frontier\n\nVisualization: line charts, frontier plots\n\nStreamlit dashboard"
+  },
+  {
+    "objectID": "docs/index.html#documentation-sections",
+    "href": "docs/index.html#documentation-sections",
+    "title": "Portfolio-MPT: Modern Portfolio Optimization in Python",
+    "section": "",
+    "text": "Use the navigation bar above to view:\n- Tutorial - full end-to-end-workflow\n- API Reference - function-level descriptions"
+  },
+  {
+    "objectID": "docs/tutorial.html",
+    "href": "docs/tutorial.html",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "This tutorial walks through a complete workflow using portfolio-mpt.\n\n\nimport portfolio_mpt as pm\nfrom portfolio_mpt import data, wrangle, analysis, optimize\n\n\n\ntickers = [\"AAPL\", \"MSFT\", \"NVDA\"]\nspec = data.FetchSpec(tickers, \"2023-01-01\", \"2024-01-01\")\nprices = data.fetch_prices(spec, clean=True)\n\n\n\nrets = wrangle.to_returns(prices)\n\n\n\nmu = analysis.expected_returns(rets)\nSigma = analysis.covariance(rets)\n\n\n\n\n\ngmv = optimize.global_min_variance(mu, Sigma)\ngmv.weights\n\n\n\nms = optimize.max_sharpe(mu, Sigma)\nms.weights\n\n\n\n\nfrontier = optimize.frontier_risk_aversion(mu, Sigma)\n\n\n\nstreamlit run streamlit_app.py"
+  },
+  {
+    "objectID": "docs/tutorial.html#markdown",
+    "href": "docs/tutorial.html#markdown",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "title: “Tutorial: Portfolio Optimization Workflow” format: html —"
+  },
+  {
+    "objectID": "docs/tutorial.html#import-the-package",
+    "href": "docs/tutorial.html#import-the-package",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "import portfolio_mpt as pm\nfrom portfolio_mpt import data, wrangle, analysis, optimize"
+  },
+  {
+    "objectID": "docs/tutorial.html#fetch-historical-data",
+    "href": "docs/tutorial.html#fetch-historical-data",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "tickers = [\"AAPL\", \"MSFT\", \"NVDA\"]\nspec = data.FetchSpec(tickers, \"2023-01-01\", \"2024-01-01\")\nprices = data.fetch_prices(spec, clean=True)"
+  },
+  {
+    "objectID": "docs/tutorial.html#compute-returns",
+    "href": "docs/tutorial.html#compute-returns",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "rets = wrangle.to_returns(prices)"
+  },
+  {
+    "objectID": "docs/tutorial.html#section",
+    "href": "docs/tutorial.html#section",
+    "title": "portfolio-mpt Documentation",
+    "section": "4.",
+    "text": "4."
+  },
+  {
+    "objectID": "docs/tutorial.html#estimate-expected-returns-and-covariance",
+    "href": "docs/tutorial.html#estimate-expected-returns-and-covariance",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "mu = analysis.expected_returns(rets)\nSigma = analysis.covariance(rets)"
+  },
+  {
+    "objectID": "docs/tutorial.html#run-optimizations",
+    "href": "docs/tutorial.html#run-optimizations",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "gmv = optimize.global_min_variance(mu, Sigma)\ngmv.weights\n\n\n\nms = optimize.max_sharpe(mu, Sigma)\nms.weights"
+  },
+  {
+    "objectID": "docs/tutorial.html#efficient-frontier",
+    "href": "docs/tutorial.html#efficient-frontier",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "frontier = optimize.frontier_risk_aversion(mu, Sigma)"
+  },
+  {
+    "objectID": "docs/tutorial.html#streamlit-dashboard",
+    "href": "docs/tutorial.html#streamlit-dashboard",
+    "title": "Tutorial: Portfolio Optimization Workflow",
+    "section": "",
+    "text": "streamlit run streamlit_app.py"
+  },
+  {
+    "objectID": "docs/api.html",
+    "href": "docs/api.html",
+    "title": "API Reference",
+    "section": "",
+    "text": "This page documents the public functions, classes, and modules in the portfolio-mpt package.\nThe API is organized into logical modules for:\n\nData handling\n\nWrangling\n\nAnalysis\n\nOptimization\n\nVisualization\n\nCleaning\n\nCommand-line interface\n\n\n\nportfolio_mpt.data\nUtilities for fetching, storing, cleaning, and loading historical stock data.\n\n\nFetchSpec\nA dataclass describing a data request.\n@dataclass\nclass FetchSpec:\n    tickers: list[str]\n    start: str\n    end: str\n    interval: str = \"1d\"\n\nFields\n\ntickers — list of asset tickers\n\nstart, end — date strings \"YYYY-MM-DD\"\n\ninterval — \"1d\", \"1wk\", \"1mo\", etc.\n\n\n\n\n\nfetch_prices(spec, force=False, clean=False)\nDownload price data for all tickers in a FetchSpec.\n\nParameters\n\nspec — a FetchSpec instance\n\nforce — ignore cached files and re-download\n\nclean — automatically clean the newly downloaded parquet\n\n\n\nReturns\n\nDataFrame - Adjusted closing prices indexed by datetime.\n\n\n\n\n\nload_latest_for(tickers)\nLoad the most recent raw parquet for the given tickers.\n\nParameters\n\ntickers (Iterable[str]) - Tickers to search for\n\n\n\nReturns\n\nDataFrame or None - Loaded prices or None if no match exists\n\n\n\n\n\nload_cleaned_for(tickers)\nLoad the most recent cleaned parquet for the given tickers.\n\nParameters\n\ntickers (Iterable[str]) - Desired tickers\n\n\n\nReturns\n\nDataFrame or None - Cleaned prices or None\n\n\n\n\n\n\n\nportfolio_mpt.wrangle\nTools for transforming raw price data into returns.\n\n\nto_returns(prices, method=\"simple\", benchmark=None)\nCompute asset returns.\n\nParameters\n\nprices (DataFrame) - Price Data\n\nmethod (str) - ‘simple’, ‘log’, or ‘excess’\n\nbenchmark (str or Series, optional) - For excess returns\n\n\n\nReturns\n\nDataFrame - Return series\n\n\n\nMethods\n\n\"simple\" – percent change\n\n\"log\" – log returns\n\n\"excess\" – excess returns vs benchmark\n\n\n\n\n\ncumulative_returns(returns)\nCompute cumulative return:\n\\[\n(1 + r_t)^{\\text{cumprod}} - 1\n\\]\n\nParameters\n\nreturns (DataFrame)\n\n\n\nReturns\n\nDataFrame - The cumulative returns\n\n\n\n\n\nrolling_returns(returns, window=252)\nRolling-window cumulative return.\n\nParameters\n\nreturns (DataFrame)\n\nwindow (int) - Lookback length\n\n\n\nReturns\n\nSeries - A series of rolling returns\n\n\n\n\n\nlog_to_simple(log_returns)\nConvert log returns → simple returns.\n\nParameters\n\nlog_returns (Series or DataFrame)\n\n\n\nReturns\n\nSame type as input\n\n\n\n\n\nsimple_to_log(simple_returns)\nConvert simple returns → log returns.\n\nParameters\n\nsimple_returns (Series or DataFrame)\n\n\n\nReturns\n\nSame type as input\n\n\n\nRaises\n\nValueError - If any return ≤ –100%.\n\n\n\n\n\n\n\nportfolio_mpt.analysis\nStatistical estimation: expected returns, covariance, and portfolio metrics.\n\n\nexpected_returns(returns_df, method=\"mean\", span=None, annualize=True)\nEstimate expected returns per asset.\n\nParameters\n\nreturns_df (DataFrame)\n\nmethod (str) - ‘mean’ or ‘ema’\n\nspan (int, optional) - Required for EMA\n\nannualize (bool) - Annualize or not\n\n\n\nReturns\n\nSeries - Expected returns per asset\n\n\n\nMethods\n\n\"mean\" – arithmetic mean\n\n\"ema\" – exponentially weighted average\n\nReturns an annualized return vector by default.\n\n\n\n\ncovariance(returns_df, method=\"sample\", annualize=True)\nCompute covariance matrix using:\n- sample covariance\n- Ledoit–Wolf shrinkage (optional)\n\nParameters\n\nreturns_df (DataFrame)\n\nmethod (str) - ‘sample’ or ‘ledoit_wolf’\n\nannualize (bool) - Annualize or not\n\n\n\nReturns\n\nDataFrame - Covariance matrix\n\nAnnualized by default.\n\n\n\n\nportfolio_metrics(weights, mu, Sigma, rf=0.0)\n\nParameters\n\nweights (array-like) - Must sum to 1\n\nmu (Series) - Expected returns\n\nSigma (DataFrame) - Covariance\n\nrf (float) - Risk-free rate\n\n\n\nReturns\nReturn a dictionary of:\n- ret — expected return\n- vol — volatility\n- sharpe — Sharpe ratio\nWeights must sum to 1.\n\n\n\n\n\n\nportfolio_mpt.optimize\nModern Portfolio Theory optimization tools.\n\n\nOptResult\nDataclass storing optimization output:\n- weights - ret - vol - sharpe - success - message\n\n\n\nglobal_min_variance(mu, Sigma)\nCompute the minimum-variance portfolio.\n\nParameters\n\nmu (Series)\n\nDataFrame (DataFrame)\n\n\n\nReturns\n\nOptResult\n\n\n\n\n\nmax_sharpe(mu, Sigma, rf=0.0)\nCompute the maximum Sharpe ratio portfolio.\n\nParameters\n\nmu (Series)\n\nSigmna (DataFrame)\n\nrf (Float) - Rist-free rate\n\n\n\nReturns\n\nOptResult\n\n\n\n\n\noptimize_for_target_return(mu, Sigma, target)\nFind the lowest-volatility portfolio achieving a specific expected return.\n\nParameters\n\nmu (Series)\n\nSigma (DataFrame)\n\ntarget (Float)\n\n\n\nReturns\n\nOptResult\n\n\n\n\n\nefficient_frontier(mu, Sigma, n_points=30)\nClassical target-return efficient frontier.\n\nParameters\n\nmu (Series)\n\nSigma (DataFrame)\n\nn_points (int)\n\n\n\nReturns\n\nlist[OptResult]\n\n\n\n\n\nfrontier_risk_aversion(mu, Sigma, lambdas=None)\nRecommended smooth frontier method.\nSweeps risk-aversion levels:\n\\[\n\\min_w \\; \\lambda w^\\top \\Sigma w - w^\\top \\mu\n\\]\nProduces a convex frontier that always includes the Max Sharpe portfolio.\n\nParameters\n\nmu (Series)\n\nSigma (DataFrame)\n\nlambdas (array-like, optional)\n\n\n\nReturns\n\nlist[OptResult]\n\n\n\n\n\n\n\nportfolio_mpt.viz\nMatplotlib-based plotting helpers.\n\n\nline(df, title=\"Prices\")\nSimple wrapper to plot price or return series.\n\nParameters\n\ndf (DataFrame)\n\ntitle (str)\n\n\n\nReturns\n\nAxesSubplot\n\n\n\n\n\nefficient_frontier_plot(results, ms=None, cml=False, rf=0.0)\nPlot an efficient frontier using matplotlib.\n\nParameters\n\nresults (list[OptResult])\n\nms (OptResult, optional)\n\ncml (bool)\n\nrf (float)\n\n\n\nReturns\n\nAxesSubplot\n\n\n\n\n\n\n\nportfolio_mpt.clean\nCleaning utilities for parquet price files.\n\n\nclean_price_file(raw_path)\nCleans a single parquet file:\n- Fix timestamps\n- Remove duplicates\n- Reindex to daily frequency\n- Forward/backward fill\n- Save cleaned version + manifest\n\nParameters\n\nraw_path (str or Path) = Path to raw parquet file\n\n\n\nReturns\n\nPath - Cleaned parquet path\n\n\n\n\n\nclean_all_raw()\nClean all files in data/raw/ and save them into data/clean/.\n\nParameters\n\nNone\n\n\n\nReturns\n\nlist[Path]\n\n\n\n\n\n\n\nportfolio_mpt.cli\nCommand-line interface for quick data pulls.\n\n\nportfolio-mpt data-spike\nDownload demo tickers and display a quick price plot.\n\nExample\nportfolio-mpt data-spike --tickers AAPL MSFT NVDA\nUseful for confirming installation & testing data access."
+  },
+  {
+    "objectID": "docs/api.html#fetchspec",
+    "href": "docs/api.html#fetchspec",
+    "title": "API Reference",
+    "section": "FetchSpec",
+    "text": "FetchSpec\nA dataclass describing a data request.\n@dataclass\nclass FetchSpec:\n    tickers: list[str]\n    start: str\n    end: str\n    interval: str = \"1d\"\n\nFields\n\ntickers — list of asset tickers\n\nstart, end — date strings \"YYYY-MM-DD\"\n\ninterval — \"1d\", \"1wk\", \"1mo\", etc."
+  },
+  {
+    "objectID": "docs/api.html#fetch_pricesspec-forcefalse-cleanfalse",
+    "href": "docs/api.html#fetch_pricesspec-forcefalse-cleanfalse",
+    "title": "API Reference",
+    "section": "fetch_prices(spec, force=False, clean=False)",
+    "text": "fetch_prices(spec, force=False, clean=False)\nDownload price data for all tickers in a FetchSpec.\n\nParameters\n\nspec — a FetchSpec instance\n\nforce — ignore cached files and re-download\n\nclean — automatically clean the newly downloaded parquet\n\n\n\nReturns\nA DataFrame of adjusted closing prices indexed by datetime."
+  },
+  {
+    "objectID": "docs/api.html#load_latest_fortickers",
+    "href": "docs/api.html#load_latest_fortickers",
+    "title": "API Reference",
+    "section": "load_latest_for(tickers)",
+    "text": "load_latest_for(tickers)\nLoad the most recent raw parquet for the given tickers.\nReturns None if no matching file exists."
+  },
+  {
+    "objectID": "docs/api.html#load_cleaned_fortickers",
+    "href": "docs/api.html#load_cleaned_fortickers",
+    "title": "API Reference",
+    "section": "load_cleaned_for(tickers)",
+    "text": "load_cleaned_for(tickers)\nLoad the most recent cleaned parquet for the given tickers.\nReturns None if none exists."
+  },
+  {
+    "objectID": "docs/api.html#to_returnsprices-methodsimple-benchmarknone",
+    "href": "docs/api.html#to_returnsprices-methodsimple-benchmarknone",
+    "title": "API Reference",
+    "section": "to_returns(prices, method=\"simple\", benchmark=None)",
+    "text": "to_returns(prices, method=\"simple\", benchmark=None)\nCompute asset returns.\n\nMethods\n\n\"simple\" – percent change\n\n\"log\" – log returns\n\n\"excess\" – excess returns vs benchmark"
+  },
+  {
+    "objectID": "docs/api.html#cumulative_returnsreturns",
+    "href": "docs/api.html#cumulative_returnsreturns",
+    "title": "API Reference",
+    "section": "cumulative_returns(returns)",
+    "text": "cumulative_returns(returns)\nCompute cumulative return:\n[ (1 + r_t)^{} - 1 ]"
+  },
+  {
+    "objectID": "docs/api.html#rolling_returnsreturns-window252",
+    "href": "docs/api.html#rolling_returnsreturns-window252",
+    "title": "API Reference",
+    "section": "rolling_returns(returns, window=252)",
+    "text": "rolling_returns(returns, window=252)\nRolling-window cumulative return."
+  },
+  {
+    "objectID": "docs/api.html#log_to_simplelog_returns",
+    "href": "docs/api.html#log_to_simplelog_returns",
+    "title": "API Reference",
+    "section": "log_to_simple(log_returns)",
+    "text": "log_to_simple(log_returns)\nConvert log returns → simple returns."
+  },
+  {
+    "objectID": "docs/api.html#simple_to_logsimple_returns",
+    "href": "docs/api.html#simple_to_logsimple_returns",
+    "title": "API Reference",
+    "section": "simple_to_log(simple_returns)",
+    "text": "simple_to_log(simple_returns)\nConvert simple returns → log returns.\nRaises an error if any return ≤ –100%."
+  },
+  {
+    "objectID": "docs/api.html#expected_returns...",
+    "href": "docs/api.html#expected_returns...",
+    "title": "API Reference",
+    "section": "expected_returns(...)",
+    "text": "expected_returns(...)\nComputes expected returns using: - mean\n- exponential moving average\nAnnualized by default."
+  },
+  {
+    "objectID": "docs/api.html#covariance...",
+    "href": "docs/api.html#covariance...",
+    "title": "API Reference",
+    "section": "covariance(...)",
+    "text": "covariance(...)\nComputes covariance matrix using: - sample covariance\n- Ledoit–Wolf shrinkage (optional)\nAnnualized by default."
+  },
+  {
+    "objectID": "docs/api.html#portfolio_metricsweights-mu-sigma-rf0.0",
+    "href": "docs/api.html#portfolio_metricsweights-mu-sigma-rf0.0",
+    "title": "API Reference",
+    "section": "portfolio_metrics(weights, mu, Sigma, rf=0.0)",
+    "text": "portfolio_metrics(weights, mu, Sigma, rf=0.0)\nReturn a dictionary of: - ret — expected return\n- vol — volatility\n- sharpe — Sharpe ratio\nWeights must sum to 1."
+  },
+  {
+    "objectID": "docs/api.html#optresult",
+    "href": "docs/api.html#optresult",
+    "title": "API Reference",
+    "section": "OptResult",
+    "text": "OptResult\nReturned by all optimizers.\n\nFields\n\nweights\nret\nvol\nsharpe\nsuccess\nmessage"
+  },
+  {
+    "objectID": "docs/api.html#global_min_variancemu-sigma",
+    "href": "docs/api.html#global_min_variancemu-sigma",
+    "title": "API Reference",
+    "section": "global_min_variance(mu, Sigma)",
+    "text": "global_min_variance(mu, Sigma)\nCompute the minimum-variance portfolio."
+  },
+  {
+    "objectID": "docs/api.html#max_sharpemu-sigma-rf0.0",
+    "href": "docs/api.html#max_sharpemu-sigma-rf0.0",
+    "title": "API Reference",
+    "section": "max_sharpe(mu, Sigma, rf=0.0)",
+    "text": "max_sharpe(mu, Sigma, rf=0.0)\nCompute the maximum Sharpe ratio portfolio."
+  },
+  {
+    "objectID": "docs/api.html#optimize_for_target_returnmu-sigma-target",
+    "href": "docs/api.html#optimize_for_target_returnmu-sigma-target",
+    "title": "API Reference",
+    "section": "optimize_for_target_return(mu, Sigma, target)",
+    "text": "optimize_for_target_return(mu, Sigma, target)\nFind the lowest-volatility portfolio achieving a specific expected return."
+  },
+  {
+    "objectID": "docs/api.html#efficient_frontier...",
+    "href": "docs/api.html#efficient_frontier...",
+    "title": "API Reference",
+    "section": "efficient_frontier(...)",
+    "text": "efficient_frontier(...)\nClassical target-return efficient frontier."
+  },
+  {
+    "objectID": "docs/api.html#frontier_risk_aversionmu-sigma-lambdasnone",
+    "href": "docs/api.html#frontier_risk_aversionmu-sigma-lambdasnone",
+    "title": "API Reference",
+    "section": "frontier_risk_aversion(mu, Sigma, lambdas=None)",
+    "text": "frontier_risk_aversion(mu, Sigma, lambdas=None)\nRecommended smooth frontier method.\nSweeps risk-aversion levels:\n[ _w w^w - w^ ]\nProduces a convex frontier that always includes the Max Sharpe portfolio."
+  },
+  {
+    "objectID": "docs/api.html#linedf-titleprices",
+    "href": "docs/api.html#linedf-titleprices",
+    "title": "API Reference",
+    "section": "line(df, title=\"Prices\")",
+    "text": "line(df, title=\"Prices\")\nSimple wrapper to plot price or return series."
+  },
+  {
+    "objectID": "docs/api.html#efficient_frontier_plotresults-msnone-cmlfalse-rf0.0",
+    "href": "docs/api.html#efficient_frontier_plotresults-msnone-cmlfalse-rf0.0",
+    "title": "API Reference",
+    "section": "efficient_frontier_plot(results, ms=None, cml=False, rf=0.0)",
+    "text": "efficient_frontier_plot(results, ms=None, cml=False, rf=0.0)\nPlot an efficient frontier using matplotlib.\n\nFeatures\n\nEfficient frontier scatter\n\nOptional Max Sharpe marker\n\nOptional Capital Market Line (CML)"
+  },
+  {
+    "objectID": "docs/api.html#clean_price_fileraw_path",
+    "href": "docs/api.html#clean_price_fileraw_path",
+    "title": "API Reference",
+    "section": "clean_price_file(raw_path)",
+    "text": "clean_price_file(raw_path)\nCleans a single parquet file: - Fix timestamps\n- Remove duplicates\n- Reindex to daily frequency\n- Forward/backward fill\n- Save cleaned version + manifest\nReturns the cleaned parquet path."
+  },
+  {
+    "objectID": "docs/api.html#clean_all_raw",
+    "href": "docs/api.html#clean_all_raw",
+    "title": "API Reference",
+    "section": "clean_all_raw()",
+    "text": "clean_all_raw()\nClean all files in data/raw/ and save them into data/clean/."
+  },
+  {
+    "objectID": "docs/api.html#portfolio-mpt-data-spike",
+    "href": "docs/api.html#portfolio-mpt-data-spike",
+    "title": "API Reference",
+    "section": "portfolio-mpt data-spike",
+    "text": "portfolio-mpt data-spike\nDownload demo tickers and display a quick price plot.\n\nExample\nportfolio-mpt data-spike --tickers AAPL MSFT NVDA\nUseful for confirming installation & testing data access."
+  },
+  {
+    "objectID": "docs/api.html#expected_returnsreturns_df-methodmean-spannone-annualizetrue",
+    "href": "docs/api.html#expected_returnsreturns_df-methodmean-spannone-annualizetrue",
+    "title": "API Reference",
+    "section": "expected_returns(returns_df, method=\"mean\", span=None, annualize=True)",
+    "text": "expected_returns(returns_df, method=\"mean\", span=None, annualize=True)\nEstimate expected returns per asset.\n\nMethods\n\n\"mean\" – arithmetic mean\n\n\"ema\" – exponentially weighted average\n\nReturns an annualized return vector by default."
+  },
+  {
+    "objectID": "docs/api.html#covariancereturns_df-methodsample-annualizetrue",
+    "href": "docs/api.html#covariancereturns_df-methodsample-annualizetrue",
+    "title": "API Reference",
+    "section": "covariance(returns_df, method=\"sample\", annualize=True)",
+    "text": "covariance(returns_df, method=\"sample\", annualize=True)\nCompute covariance matrix using: - sample covariance\n- Ledoit–Wolf shrinkage (optional)\nAnnualized by default."
+  },
+  {
+    "objectID": "docs/api.html#efficient_frontiermu-sigma-n_points30",
+    "href": "docs/api.html#efficient_frontiermu-sigma-n_points30",
+    "title": "API Reference",
+    "section": "efficient_frontier(mu, Sigma, n_points=30)",
+    "text": "efficient_frontier(mu, Sigma, n_points=30)\nClassical target-return efficient frontier."
+  },
+  {
+    "objectID": "docs/api.html#portfolio_mpt.wrangle",
+    "href": "docs/api.html#portfolio_mpt.wrangle",
+    "title": "API Reference",
+    "section": "portfolio_mpt.wrangle",
+    "text": "portfolio_mpt.wrangle\nFunctions for transforming raw price data into returns."
+  },
+  {
+    "objectID": "docs/api.html#portfolio_mpt.analysis",
+    "href": "docs/api.html#portfolio_mpt.analysis",
+    "title": "API Reference",
+    "section": "portfolio_mpt.analysis",
+    "text": "portfolio_mpt.analysis\nCore statistical estimators."
+  },
+  {
+    "objectID": "docs/api.html#returns-1",
+    "href": "docs/api.html#returns-1",
+    "title": "API Reference",
+    "section": "#### Returns",
+    "text": "#### Returns\n\n\nload_cleaned_for(tickers)\nLoad the most recent cleaned parquet for the given tickers.\nReturns None if none exists."
+  },
+  {
+    "objectID": "docs/api.html#parameters-19",
+    "href": "docs/api.html#parameters-19",
+    "title": "API Reference",
+    "section": "#### Parameters",
+    "text": "#### Parameters\n\nReturns\n\nlist[Path]"
+  }
+]

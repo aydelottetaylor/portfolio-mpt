@@ -1,0 +1,58 @@
+---
+title: "Tutorial: Portfolio Optimization Workflow"
+format: html
+---
+
+# Tutorial
+
+This tutorial walks through a complete workflow using `portfolio-mpt`.
+
+## 1. Import the package
+
+```python
+import portfolio_mpt as pm
+from portfolio_mpt import data, wrangle, analysis, optimize
+```
+
+## 2. Fetch historical data
+```python
+tickers = ["AAPL", "MSFT", "NVDA"]
+spec = data.FetchSpec(tickers, "2023-01-01", "2024-01-01")
+prices = data.fetch_prices(spec, clean=True)
+```
+
+## 3. Compute Returns
+```python
+rets = wrangle.to_returns(prices)
+```
+
+## 4. Estimate Expected Returns and Covariance
+```python
+mu = analysis.expected_returns(rets)
+Sigma = analysis.covariance(rets)
+```
+
+## 5. Run Optimizations
+
+### Global Minimum Variance
+```python
+gmv = optimize.global_min_variance(mu, Sigma)
+gmv.weights
+```
+
+### Maximum Sharpe Ratio
+```python
+ms = optimize.max_sharpe(mu, Sigma)
+ms.weights
+```
+## 6. Efficient Frontier
+```python
+frontier = optimize.frontier_risk_aversion(mu, Sigma)
+```
+
+## 7. Streamlit Dashboard
+```python 
+streamlit run streamlit_app.py
+```
+
+---
