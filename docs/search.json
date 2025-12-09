@@ -4,56 +4,56 @@
     "href": "tutorial.html",
     "title": "Tutorial: Portfolio Optimization Workflow",
     "section": "",
-    "text": "This tutorial walks through a complete workflow using portfolio-mpt.\n\n\nimport portfolio_mpt as pm\nfrom portfolio_mpt import data, wrangle, analysis, optimize\n\n\n\ntickers = [\"AAPL\", \"MSFT\", \"NVDA\"]\nspec = data.FetchSpec(tickers, \"2023-01-01\", \"2024-01-01\")\nprices = data.fetch_prices(spec, clean=True)\n\n\n\nrets = wrangle.to_returns(prices)\n\n\n\nmu = analysis.expected_returns(rets)\nSigma = analysis.covariance(rets)\n\n\n\n\n\ngmv = optimize.global_min_variance(mu, Sigma)\ngmv.weights\n\n\n\nms = optimize.max_sharpe(mu, Sigma)\nms.weights\n\n\n\n\nfrontier = optimize.frontier_risk_aversion(mu, Sigma)\n\n\n\nstreamlit run streamlit_app.py"
+    "text": "This tutorial walks through a complete workflow using portfolio-mpt."
   },
   {
     "objectID": "tutorial.html#import-the-package",
     "href": "tutorial.html#import-the-package",
     "title": "Tutorial: Portfolio Optimization Workflow",
-    "section": "",
-    "text": "import portfolio_mpt as pm\nfrom portfolio_mpt import data, wrangle, analysis, optimize"
+    "section": "1. Import the package",
+    "text": "1. Import the package\nimport portfolio_mpt as pm\nfrom portfolio_mpt import data, wrangle, analysis, optimize"
   },
   {
     "objectID": "tutorial.html#fetch-historical-data",
     "href": "tutorial.html#fetch-historical-data",
     "title": "Tutorial: Portfolio Optimization Workflow",
-    "section": "",
-    "text": "tickers = [\"AAPL\", \"MSFT\", \"NVDA\"]\nspec = data.FetchSpec(tickers, \"2023-01-01\", \"2024-01-01\")\nprices = data.fetch_prices(spec, clean=True)"
+    "section": "2. Fetch historical data",
+    "text": "2. Fetch historical data\ntickers = [\"AAPL\", \"MSFT\", \"NVDA\"]\nspec = data.FetchSpec(tickers, \"2023-01-01\", \"2024-01-01\")\nprices = data.fetch_prices(spec, clean=True)"
   },
   {
     "objectID": "tutorial.html#compute-returns",
     "href": "tutorial.html#compute-returns",
     "title": "Tutorial: Portfolio Optimization Workflow",
-    "section": "",
-    "text": "rets = wrangle.to_returns(prices)"
+    "section": "3. Compute Returns",
+    "text": "3. Compute Returns\nrets = wrangle.to_returns(prices)"
   },
   {
     "objectID": "tutorial.html#estimate-expected-returns-and-covariance",
     "href": "tutorial.html#estimate-expected-returns-and-covariance",
     "title": "Tutorial: Portfolio Optimization Workflow",
-    "section": "",
-    "text": "mu = analysis.expected_returns(rets)\nSigma = analysis.covariance(rets)"
+    "section": "4. Estimate Expected Returns and Covariance",
+    "text": "4. Estimate Expected Returns and Covariance\nmu = analysis.expected_returns(rets)\nSigma = analysis.covariance(rets)"
   },
   {
     "objectID": "tutorial.html#run-optimizations",
     "href": "tutorial.html#run-optimizations",
     "title": "Tutorial: Portfolio Optimization Workflow",
-    "section": "",
-    "text": "gmv = optimize.global_min_variance(mu, Sigma)\ngmv.weights\n\n\n\nms = optimize.max_sharpe(mu, Sigma)\nms.weights"
+    "section": "5. Run Optimizations",
+    "text": "5. Run Optimizations\n\nGlobal Minimum Variance\ngmv = optimize.global_min_variance(mu, Sigma)\ngmv.weights\n\n\nMaximum Sharpe Ratio\nms = optimize.max_sharpe(mu, Sigma)\nms.weights"
   },
   {
     "objectID": "tutorial.html#efficient-frontier",
     "href": "tutorial.html#efficient-frontier",
     "title": "Tutorial: Portfolio Optimization Workflow",
-    "section": "",
-    "text": "frontier = optimize.frontier_risk_aversion(mu, Sigma)"
+    "section": "6. Efficient Frontier",
+    "text": "6. Efficient Frontier\nfrontier = optimize.frontier_risk_aversion(mu, Sigma)"
   },
   {
     "objectID": "tutorial.html#streamlit-dashboard",
     "href": "tutorial.html#streamlit-dashboard",
     "title": "Tutorial: Portfolio Optimization Workflow",
-    "section": "",
-    "text": "streamlit run streamlit_app.py"
+    "section": "7. Streamlit Dashboard",
+    "text": "7. Streamlit Dashboard\nstreamlit run streamlit_app.py"
   },
   {
     "objectID": "index.html",
