@@ -9,13 +9,13 @@ This page documents the public functions, classes, and modules in the **portfoli
 
 The API is organized into logical modules for:
 
-- Data handling  
-- Wrangling  
-- Analysis  
-- Optimization  
-- Visualization  
-- Cleaning  
-- Command-line interface  
+- Data handling  (portfolio_mpt.data)  
+- Wrangling  (portfolio_mpt.wrangle)  
+- Analysis  (portfolio_mpt.analysis)  
+- Optimization  (portfolio_mpt.optimize)  
+- Visualization  (portfolio_mpt.viz)  
+- Cleaning  (portfolio_mpt.clean)  
+- Command-line interface  (portfolio_mpt.cli)
 
 ---
 
@@ -53,7 +53,7 @@ Download price data for all tickers in a `FetchSpec`.
 - **clean** — automatically clean the newly downloaded parquet  
 
 #### Returns
-- **DataFrame** - Adjusted closing prices indexed by datetime.
+- `DataFrame` - Adjusted closing prices indexed by datetime.
 
 ---
 
@@ -61,10 +61,10 @@ Download price data for all tickers in a `FetchSpec`.
 Load the most recent **raw** parquet for the given tickers.  
 
 #### Parameters
-- **tickers** (Iterable[str]) - Tickers to search for
+- **tickers** `(Iterable[str])` - Tickers to search for
 
 #### Returns
-- **DataFrame or None** - Loaded prices or None if no match exists
+- `DataFrame` or `None` - Loaded prices or None if no match exists
 
 ---
 
@@ -72,10 +72,10 @@ Load the most recent **raw** parquet for the given tickers.
 Load the most recent **cleaned** parquet for the given tickers.  
 
 #### Parameters
-- **tickers** (Iterable[str]) - Desired tickers
+- **tickers** `(Iterable[str])` - Desired tickers
 
 #### Returns
-- **DataFrame or None** - Cleaned prices or None
+- `DataFrame` or `None` - Cleaned prices or None
 
 ---
 
@@ -91,12 +91,12 @@ Tools for transforming raw price data into returns.
 Compute asset returns.
 
 #### Parameters
-- **prices** (DataFrame) - Price Data  
-- **method** (str) - 'simple', 'log', or 'excess'  
-- **benchmark** (str or Series, optional) - For excess returns
+- **prices** `(DataFrame)` - Price Data  
+- **method** `(str)` - 'simple', 'log', or 'excess'  
+- **benchmark** `(str or Series, optional)` - For excess returns
 
 #### Returns
-- **DataFrame** - Return series
+- `DataFrame` - Return series
 
 #### Methods
 - `"simple"` – percent change  
@@ -113,10 +113,10 @@ $$
 $$
 
 #### Parameters
-- **returns** (DataFrame)
+- **returns** `(DataFrame)`
 
 #### Returns
-- **DataFrame** - The cumulative returns
+- `DataFrame` - The cumulative returns
 
 ---
 
@@ -124,11 +124,11 @@ $$
 Rolling-window cumulative return.
 
 #### Parameters
-- **returns** (DataFrame)  
-- **window** (int) - Lookback length
+- **returns** `(DataFrame)`  
+- **window** `(int)` - Lookback length
 
 #### Returns
-- **Series** - A series of rolling returns
+- `Series` - A series of rolling returns
 
 ---
 
@@ -136,10 +136,10 @@ Rolling-window cumulative return.
 Convert log returns → simple returns.
 
 #### Parameters
-- **log_returns** (Series or DataFrame)
+- **log_returns** `(Series or DataFrame)`
 
 #### Returns
-- **Same type as input**
+- `Same type as input`
 
 ---
 
@@ -147,13 +147,13 @@ Convert log returns → simple returns.
 Convert simple returns → log returns. 
 
 #### Parameters
-- **simple_returns** (Series or DataFrame)
+- **simple_returns** `(Series or DataFrame)`
 
 #### Returns
 - **Same type as input**
 
 #### Raises 
-- **ValueError** - If any return ≤ –100%.
+- `ValueError` - If any return ≤ –100%.
 
 ---
 
@@ -169,13 +169,13 @@ Statistical estimation: expected returns, covariance, and portfolio metrics.
 Estimate expected returns per asset.
 
 #### Parameters
-- **returns_df** (DataFrame)  
-- **method** (str) - 'mean' or 'ema'  
-- **span** (int, optional) - Required for EMA  
-- **annualize** (bool) - Annualize or not
+- **returns_df** `(DataFrame)`  
+- **method** `(str)` - 'mean' or 'ema'  
+- **span** `(int, optional)` - Required for EMA  
+- **annualize** `(bool)` - Annualize or not
 
 #### Returns
-- **Series** - Expected returns per asset
+- `Series` - Expected returns per asset
 
 #### Methods
 - `"mean"` – arithmetic mean  
@@ -191,12 +191,12 @@ Compute covariance matrix using:
 - Ledoit–Wolf shrinkage (optional)
 
 #### Parameters
-- **returns_df** (DataFrame)  
-- **method** (str) - 'sample' or 'ledoit_wolf'  
-- **annualize** (bool) - Annualize or not
+- **returns_df** `(DataFrame)`  
+- **method** `(str)` - 'sample' or 'ledoit_wolf'  
+- **annualize** `(bool)` - Annualize or not
 
 #### Returns
-- **DataFrame** - Covariance matrix
+- `DataFrame` - Covariance matrix
 
 Annualized by default.
 
@@ -205,10 +205,10 @@ Annualized by default.
 ### `portfolio_metrics(weights, mu, Sigma, rf=0.0)`
 
 #### Parameters
-- **weights** (array-like) - Must sum to 1  
-- **mu** (Series) - Expected returns  
-- **Sigma** (DataFrame) - Covariance  
-- **rf** (float) - Risk-free rate
+- **weights** `(array-like)` - Must sum to 1  
+- **mu** `(Series)` - Expected returns  
+- **Sigma** `(DataFrame)` - Covariance  
+- **rf** `(float)` - Risk-free rate
 
 #### Returns
 Return a dictionary of:  
@@ -244,11 +244,11 @@ Dataclass storing optimization output:
 Compute the **minimum-variance portfolio**.
 
 #### Parameters
-- **mu** (Series)  
-- **DataFrame** (DataFrame)
+- **mu** `(Series)`  
+- **DataFrame** `(DataFrame)`
 
 #### Returns
-- **OptResult**
+- `OptResult`
 
 ---
 
@@ -256,12 +256,12 @@ Compute the **minimum-variance portfolio**.
 Compute the **maximum Sharpe ratio portfolio**.
 
 #### Parameters
-- **mu** (Series)  
-- **Sigmna** (DataFrame)  
-- **rf** (Float) - Rist-free rate
+- **mu** `(Series)`  
+- **Sigmna** `(DataFrame)`  
+- **rf** `(Float)` - Rist-free rate
 
 #### Returns
-- **OptResult**
+- `OptResult`
 
 ---
 
@@ -269,12 +269,12 @@ Compute the **maximum Sharpe ratio portfolio**.
 Find the lowest-volatility portfolio achieving a specific expected return.
 
 #### Parameters
-- **mu** (Series)  
-- **Sigma** (DataFrame)  
-- **target** (Float)
+- **mu** `(Series)`  
+- **Sigma** `(DataFrame)`  
+- **target** `(Float)`
 
 #### Returns
-- **OptResult**
+- `OptResult`
 
 ---
 
@@ -282,12 +282,12 @@ Find the lowest-volatility portfolio achieving a specific expected return.
 Classical target-return efficient frontier.
 
 #### Parameters
-- **mu** (Series)  
-- **Sigma** (DataFrame)  
-- **n_points** (int)
+- **mu** `(Series)`  
+- **Sigma** `(DataFrame)`  
+- **n_points** `(int)`
 
 #### Returns
-- **list[OptResult]**
+- `list[OptResult]`
 
 ---
 
@@ -303,12 +303,12 @@ $$
 Produces a convex frontier that always includes the Max Sharpe portfolio.
 
 #### Parameters
-- **mu** (Series)  
-- **Sigma** (DataFrame)  
-- **lambdas** (array-like, optional)
+- **mu** `(Series)`  
+- **Sigma** `(DataFrame)`  
+- **lambdas** `(array-like, optional)`
 
 #### Returns
-- **list[OptResult]**
+- `list[OptResult]`
 
 ---
 
@@ -324,11 +324,11 @@ Matplotlib-based plotting helpers.
 Simple wrapper to plot price or return series.
 
 #### Parameters
-- **df** (DataFrame)  
-- **title** (str)
+- **df** `(DataFrame)`  
+- **title** `(str)`
 
 #### Returns
-- **AxesSubplot**
+- `AxesSubplot`
 
 ---
 
@@ -336,13 +336,13 @@ Simple wrapper to plot price or return series.
 Plot an efficient frontier using matplotlib.
 
 #### Parameters
-- **results** (list[OptResult])  
-- **ms** (OptResult, optional)  
-- **cml** (bool)  
-- **rf** (float)
+- **results** `(list[OptResult])`  
+- **ms** `(OptResult, optional)`  
+- **cml** `(bool)`  
+- **rf** `(float)`
 
 #### Returns
-- **AxesSubplot**
+- `AxesSubplot`
 
 ---
 
@@ -363,10 +363,10 @@ Cleans a single parquet file:
 - Save cleaned version + manifest  
 
 #### Parameters
-- **raw_path** (str or Path) = Path to raw parquet file
+- **raw_path** `(str or Path)` - Path to raw parquet file
 
 #### Returns
-- **Path** - Cleaned parquet path
+- `Path` - Cleaned parquet path
 
 ---
 
@@ -377,7 +377,7 @@ Clean **all** files in `data/raw/` and save them into `data/clean/`.
 - **None**
 
 #### Returns
-- **list[Path]**
+- `list[Path]`
 
 ---
 

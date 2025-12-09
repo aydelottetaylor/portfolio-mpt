@@ -255,19 +255,19 @@ window.Quarto = {
 <p>This page documents the public functions, classes, and modules in the <strong>portfolio-mpt</strong> package.</p>
 <p>The API is organized into logical modules for:</p>
 <ul>
-<li>Data handling<br>
+<li>Data handling (portfolio_mpt.data)<br>
 </li>
-<li>Wrangling<br>
+<li>Wrangling (portfolio_mpt.wrangle)<br>
 </li>
-<li>Analysis<br>
+<li>Analysis (portfolio_mpt.analysis)<br>
 </li>
-<li>Optimization<br>
+<li>Optimization (portfolio_mpt.optimize)<br>
 </li>
-<li>Visualization<br>
+<li>Visualization (portfolio_mpt.viz)<br>
 </li>
-<li>Cleaning<br>
+<li>Cleaning (portfolio_mpt.clean)<br>
 </li>
-<li>Command-line interface</li>
+<li>Command-line interface (portfolio_mpt.cli)</li>
 </ul>
 <hr>
 <section id="portfolio_mpt.data" class="level1">
@@ -311,7 +311,7 @@ window.Quarto = {
 <section id="returns" class="level4">
 <h4 class="anchored" data-anchor-id="returns">Returns</h4>
 <ul>
-<li><strong>DataFrame</strong> - Adjusted closing prices indexed by datetime.</li>
+<li><code>DataFrame</code> - Adjusted closing prices indexed by datetime.</li>
 </ul>
 <hr>
 </section>
@@ -322,13 +322,13 @@ window.Quarto = {
 <section id="parameters-1" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-1">Parameters</h4>
 <ul>
-<li><strong>tickers</strong> (Iterable[str]) - Tickers to search for</li>
+<li><strong>tickers</strong> <code>(Iterable[str])</code> - Tickers to search for</li>
 </ul>
 </section>
 <section id="returns-1" class="level4">
 <h4 class="anchored" data-anchor-id="returns-1">Returns</h4>
 <ul>
-<li><strong>DataFrame or None</strong> - Loaded prices or None if no match exists</li>
+<li><code>DataFrame</code> or <code>None</code> - Loaded prices or None if no match exists</li>
 </ul>
 <hr>
 </section>
@@ -339,13 +339,13 @@ window.Quarto = {
 <section id="parameters-2" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-2">Parameters</h4>
 <ul>
-<li><strong>tickers</strong> (Iterable[str]) - Desired tickers</li>
+<li><strong>tickers</strong> <code>(Iterable[str])</code> - Desired tickers</li>
 </ul>
 </section>
 <section id="returns-2" class="level4">
 <h4 class="anchored" data-anchor-id="returns-2">Returns</h4>
 <ul>
-<li><strong>DataFrame or None</strong> - Cleaned prices or None</li>
+<li><code>DataFrame</code> or <code>None</code> - Cleaned prices or None</li>
 </ul>
 <hr>
 <hr>
@@ -362,17 +362,17 @@ window.Quarto = {
 <section id="parameters-3" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-3">Parameters</h4>
 <ul>
-<li><strong>prices</strong> (DataFrame) - Price Data<br>
+<li><strong>prices</strong> <code>(DataFrame)</code> - Price Data<br>
 </li>
-<li><strong>method</strong> (str) - ‘simple’, ‘log’, or ‘excess’<br>
+<li><strong>method</strong> <code>(str)</code> - ‘simple’, ‘log’, or ‘excess’<br>
 </li>
-<li><strong>benchmark</strong> (str or Series, optional) - For excess returns</li>
+<li><strong>benchmark</strong> <code>(str or Series, optional)</code> - For excess returns</li>
 </ul>
 </section>
 <section id="returns-3" class="level4">
 <h4 class="anchored" data-anchor-id="returns-3">Returns</h4>
 <ul>
-<li><strong>DataFrame</strong> - Return series</li>
+<li><code>DataFrame</code> - Return series</li>
 </ul>
 </section>
 <section id="methods" class="level4">
@@ -396,13 +396,13 @@ window.Quarto = {
 <section id="parameters-4" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-4">Parameters</h4>
 <ul>
-<li><strong>returns</strong> (DataFrame)</li>
+<li><strong>returns</strong> <code>(DataFrame)</code></li>
 </ul>
 </section>
 <section id="returns-4" class="level4">
 <h4 class="anchored" data-anchor-id="returns-4">Returns</h4>
 <ul>
-<li><strong>DataFrame</strong> - The cumulative returns</li>
+<li><code>DataFrame</code> - The cumulative returns</li>
 </ul>
 <hr>
 </section>
@@ -413,15 +413,15 @@ window.Quarto = {
 <section id="parameters-5" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-5">Parameters</h4>
 <ul>
-<li><strong>returns</strong> (DataFrame)<br>
+<li><strong>returns</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>window</strong> (int) - Lookback length</li>
+<li><strong>window</strong> <code>(int)</code> - Lookback length</li>
 </ul>
 </section>
 <section id="returns-5" class="level4">
 <h4 class="anchored" data-anchor-id="returns-5">Returns</h4>
 <ul>
-<li><strong>Series</strong> - A series of rolling returns</li>
+<li><code>Series</code> - A series of rolling returns</li>
 </ul>
 <hr>
 </section>
@@ -432,13 +432,13 @@ window.Quarto = {
 <section id="parameters-6" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-6">Parameters</h4>
 <ul>
-<li><strong>log_returns</strong> (Series or DataFrame)</li>
+<li><strong>log_returns</strong> <code>(Series or DataFrame)</code></li>
 </ul>
 </section>
 <section id="returns-6" class="level4">
 <h4 class="anchored" data-anchor-id="returns-6">Returns</h4>
 <ul>
-<li><strong>Same type as input</strong></li>
+<li><code>Same type as input</code></li>
 </ul>
 <hr>
 </section>
@@ -449,7 +449,7 @@ window.Quarto = {
 <section id="parameters-7" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-7">Parameters</h4>
 <ul>
-<li><strong>simple_returns</strong> (Series or DataFrame)</li>
+<li><strong>simple_returns</strong> <code>(Series or DataFrame)</code></li>
 </ul>
 </section>
 <section id="returns-7" class="level4">
@@ -461,7 +461,7 @@ window.Quarto = {
 <section id="raises" class="level4">
 <h4 class="anchored" data-anchor-id="raises">Raises</h4>
 <ul>
-<li><strong>ValueError</strong> - If any return ≤ –100%.</li>
+<li><code>ValueError</code> - If any return ≤ –100%.</li>
 </ul>
 <hr>
 <hr>
@@ -478,19 +478,19 @@ window.Quarto = {
 <section id="parameters-8" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-8">Parameters</h4>
 <ul>
-<li><strong>returns_df</strong> (DataFrame)<br>
+<li><strong>returns_df</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>method</strong> (str) - ‘mean’ or ‘ema’<br>
+<li><strong>method</strong> <code>(str)</code> - ‘mean’ or ‘ema’<br>
 </li>
-<li><strong>span</strong> (int, optional) - Required for EMA<br>
+<li><strong>span</strong> <code>(int, optional)</code> - Required for EMA<br>
 </li>
-<li><strong>annualize</strong> (bool) - Annualize or not</li>
+<li><strong>annualize</strong> <code>(bool)</code> - Annualize or not</li>
 </ul>
 </section>
 <section id="returns-8" class="level4">
 <h4 class="anchored" data-anchor-id="returns-8">Returns</h4>
 <ul>
-<li><strong>Series</strong> - Expected returns per asset</li>
+<li><code>Series</code> - Expected returns per asset</li>
 </ul>
 </section>
 <section id="methods-1" class="level4">
@@ -512,17 +512,17 @@ window.Quarto = {
 <section id="parameters-9" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-9">Parameters</h4>
 <ul>
-<li><strong>returns_df</strong> (DataFrame)<br>
+<li><strong>returns_df</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>method</strong> (str) - ‘sample’ or ‘ledoit_wolf’<br>
+<li><strong>method</strong> <code>(str)</code> - ‘sample’ or ‘ledoit_wolf’<br>
 </li>
-<li><strong>annualize</strong> (bool) - Annualize or not</li>
+<li><strong>annualize</strong> <code>(bool)</code> - Annualize or not</li>
 </ul>
 </section>
 <section id="returns-9" class="level4">
 <h4 class="anchored" data-anchor-id="returns-9">Returns</h4>
 <ul>
-<li><strong>DataFrame</strong> - Covariance matrix</li>
+<li><code>DataFrame</code> - Covariance matrix</li>
 </ul>
 <p>Annualized by default.</p>
 <hr>
@@ -533,13 +533,13 @@ window.Quarto = {
 <section id="parameters-10" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-10">Parameters</h4>
 <ul>
-<li><strong>weights</strong> (array-like) - Must sum to 1<br>
+<li><strong>weights</strong> <code>(array-like)</code> - Must sum to 1<br>
 </li>
-<li><strong>mu</strong> (Series) - Expected returns<br>
+<li><strong>mu</strong> <code>(Series)</code> - Expected returns<br>
 </li>
-<li><strong>Sigma</strong> (DataFrame) - Covariance<br>
+<li><strong>Sigma</strong> <code>(DataFrame)</code> - Covariance<br>
 </li>
-<li><strong>rf</strong> (float) - Risk-free rate</li>
+<li><strong>rf</strong> <code>(float)</code> - Risk-free rate</li>
 </ul>
 </section>
 <section id="returns-10" class="level4">
@@ -570,15 +570,15 @@ window.Quarto = {
 <section id="parameters-11" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-11">Parameters</h4>
 <ul>
-<li><strong>mu</strong> (Series)<br>
+<li><strong>mu</strong> <code>(Series)</code><br>
 </li>
-<li><strong>DataFrame</strong> (DataFrame)</li>
+<li><strong>DataFrame</strong> <code>(DataFrame)</code></li>
 </ul>
 </section>
 <section id="returns-11" class="level4">
 <h4 class="anchored" data-anchor-id="returns-11">Returns</h4>
 <ul>
-<li><strong>OptResult</strong></li>
+<li><code>OptResult</code></li>
 </ul>
 <hr>
 </section>
@@ -589,17 +589,17 @@ window.Quarto = {
 <section id="parameters-12" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-12">Parameters</h4>
 <ul>
-<li><strong>mu</strong> (Series)<br>
+<li><strong>mu</strong> <code>(Series)</code><br>
 </li>
-<li><strong>Sigmna</strong> (DataFrame)<br>
+<li><strong>Sigmna</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>rf</strong> (Float) - Rist-free rate</li>
+<li><strong>rf</strong> <code>(Float)</code> - Rist-free rate</li>
 </ul>
 </section>
 <section id="returns-12" class="level4">
 <h4 class="anchored" data-anchor-id="returns-12">Returns</h4>
 <ul>
-<li><strong>OptResult</strong></li>
+<li><code>OptResult</code></li>
 </ul>
 <hr>
 </section>
@@ -610,17 +610,17 @@ window.Quarto = {
 <section id="parameters-13" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-13">Parameters</h4>
 <ul>
-<li><strong>mu</strong> (Series)<br>
+<li><strong>mu</strong> <code>(Series)</code><br>
 </li>
-<li><strong>Sigma</strong> (DataFrame)<br>
+<li><strong>Sigma</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>target</strong> (Float)</li>
+<li><strong>target</strong> <code>(Float)</code></li>
 </ul>
 </section>
 <section id="returns-13" class="level4">
 <h4 class="anchored" data-anchor-id="returns-13">Returns</h4>
 <ul>
-<li><strong>OptResult</strong></li>
+<li><code>OptResult</code></li>
 </ul>
 <hr>
 </section>
@@ -631,17 +631,17 @@ window.Quarto = {
 <section id="parameters-14" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-14">Parameters</h4>
 <ul>
-<li><strong>mu</strong> (Series)<br>
+<li><strong>mu</strong> <code>(Series)</code><br>
 </li>
-<li><strong>Sigma</strong> (DataFrame)<br>
+<li><strong>Sigma</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>n_points</strong> (int)</li>
+<li><strong>n_points</strong> <code>(int)</code></li>
 </ul>
 </section>
 <section id="returns-14" class="level4">
 <h4 class="anchored" data-anchor-id="returns-14">Returns</h4>
 <ul>
-<li><strong>list[OptResult]</strong></li>
+<li><code>list[OptResult]</code></li>
 </ul>
 <hr>
 </section>
@@ -657,17 +657,17 @@ window.Quarto = {
 <section id="parameters-15" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-15">Parameters</h4>
 <ul>
-<li><strong>mu</strong> (Series)<br>
+<li><strong>mu</strong> <code>(Series)</code><br>
 </li>
-<li><strong>Sigma</strong> (DataFrame)<br>
+<li><strong>Sigma</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>lambdas</strong> (array-like, optional)</li>
+<li><strong>lambdas</strong> <code>(array-like, optional)</code></li>
 </ul>
 </section>
 <section id="returns-15" class="level4">
 <h4 class="anchored" data-anchor-id="returns-15">Returns</h4>
 <ul>
-<li><strong>list[OptResult]</strong></li>
+<li><code>list[OptResult]</code></li>
 </ul>
 <hr>
 <hr>
@@ -684,15 +684,15 @@ window.Quarto = {
 <section id="parameters-16" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-16">Parameters</h4>
 <ul>
-<li><strong>df</strong> (DataFrame)<br>
+<li><strong>df</strong> <code>(DataFrame)</code><br>
 </li>
-<li><strong>title</strong> (str)</li>
+<li><strong>title</strong> <code>(str)</code></li>
 </ul>
 </section>
 <section id="returns-16" class="level4">
 <h4 class="anchored" data-anchor-id="returns-16">Returns</h4>
 <ul>
-<li><strong>AxesSubplot</strong></li>
+<li><code>AxesSubplot</code></li>
 </ul>
 <hr>
 </section>
@@ -703,19 +703,19 @@ window.Quarto = {
 <section id="parameters-17" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-17">Parameters</h4>
 <ul>
-<li><strong>results</strong> (list[OptResult])<br>
+<li><strong>results</strong> <code>(list[OptResult])</code><br>
 </li>
-<li><strong>ms</strong> (OptResult, optional)<br>
+<li><strong>ms</strong> <code>(OptResult, optional)</code><br>
 </li>
-<li><strong>cml</strong> (bool)<br>
+<li><strong>cml</strong> <code>(bool)</code><br>
 </li>
-<li><strong>rf</strong> (float)</li>
+<li><strong>rf</strong> <code>(float)</code></li>
 </ul>
 </section>
 <section id="returns-17" class="level4">
 <h4 class="anchored" data-anchor-id="returns-17">Returns</h4>
 <ul>
-<li><strong>AxesSubplot</strong></li>
+<li><code>AxesSubplot</code></li>
 </ul>
 <hr>
 <hr>
@@ -737,13 +737,13 @@ window.Quarto = {
 <section id="parameters-18" class="level4">
 <h4 class="anchored" data-anchor-id="parameters-18">Parameters</h4>
 <ul>
-<li><strong>raw_path</strong> (str or Path) = Path to raw parquet file</li>
+<li><strong>raw_path</strong> <code>(str or Path)</code> - Path to raw parquet file</li>
 </ul>
 </section>
 <section id="returns-18" class="level4">
 <h4 class="anchored" data-anchor-id="returns-18">Returns</h4>
 <ul>
-<li><strong>Path</strong> - Cleaned parquet path</li>
+<li><code>Path</code> - Cleaned parquet path</li>
 </ul>
 <hr>
 </section>
@@ -760,7 +760,7 @@ window.Quarto = {
 <section id="returns-19" class="level4">
 <h4 class="anchored" data-anchor-id="returns-19">Returns</h4>
 <ul>
-<li><strong>list[Path]</strong></li>
+<li><code>list[Path]</code></li>
 </ul>
 <hr>
 <hr>
