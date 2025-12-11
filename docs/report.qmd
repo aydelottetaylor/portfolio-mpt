@@ -138,7 +138,7 @@ analysis environment.
 
 # Streamlit Dashboard
 
-The dashboard consists of multiple tabs:
+The dashboard can be accessed [here](https://portfolio-mpt.streamlit.app/) and consists of multiple tabs:
 
 - **Prices** — cleaned price data  
 ![](images/prices.png)  
