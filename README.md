@@ -107,21 +107,6 @@ print("Max Sharpe weights:", ms.weights)
 
 ---
 
-## Documentation
-
-Full documentation website (Quarto):
-
-**https://<aydelottetaylor>.github.io/portfolio-mpt/**
-
-Includes:
-
-- Tutorial  
-- API Reference  
-- Examples  
-- Project explanation  
-
----
-
 ## Streamlit Application
 
 View the optimized portfolios interactively:
